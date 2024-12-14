@@ -11,7 +11,7 @@ define AP_RC_CHANNEL_AUX_FUNCTION_STRINGS_ENABLED 0
 define HAL_HIGH_LATENCY2_ENABLED 0
 
 # Gripper isn't a vital feature for smaller boards
-define AP_GRIPPER_ENABLED 0
+define AP_GRIPPER_ENABLED 1
 
 # Sprayer isn't a vital feature for smaller boards
 define HAL_SPRAYER_ENABLED 0
@@ -117,7 +117,7 @@ define WEATHERVANE_ENABLED 0
 define MODE_AUTOROTATE_ENABLED 0
 
 # don't send RELAY_STATUS messages:
-define AP_MAVLINK_MSG_RELAY_STATUS_ENABLED 0
+define AP_MAVLINK_MSG_RELAY_STATUS_ENABLED 1
 
 #fewer airspeed sensors
 define AP_AIRSPEED_BACKEND_DEFAULT_ENABLED 0
