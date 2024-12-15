@@ -33,6 +33,7 @@ public:
         MAX31865                    = 3,
         TSYS03                      = 4,
         ANALOG                      = 5,
+        SHT31D                      = 8,
     };
 
     // option to map to another system component
