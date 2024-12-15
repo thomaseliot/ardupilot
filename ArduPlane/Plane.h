@@ -1100,6 +1100,18 @@ private:
     int16_t get_takeoff_pitch_min_cd(void);
     void landing_gear_update(void);
 
+     // UserCode.cpp
+    void userhook_init();
+    void userhook_FastLoop();
+    void userhook_50Hz();
+    void userhook_MediumLoop();
+    void userhook_SlowLoop();
+    void userhook_SuperSlowLoop();
+    // void userhook_auxSwitch1(const RC_Channel::AuxSwitchPos ch_flag);
+    // void userhook_auxSwitch2(const RC_Channel::AuxSwitchPos ch_flag);
+    // void userhook_auxSwitch3(const RC_Channel::AuxSwitchPos ch_flag);
+
+
     // avoidance_adsb.cpp
     void avoidance_adsb_update(void);
 
