@@ -35,6 +35,7 @@ public:
         ANALOG                      = 5,
         DRONECAN                    = 6,
         MLX90614                    = 7,
+        SHT31D                      = 8,
     };
 
     // option to map to another system component
