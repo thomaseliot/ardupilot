@@ -142,6 +142,21 @@ const AP_Scheduler::Task Plane::scheduler_tasks[] = {
 #if AP_QUICKTUNE_ENABLED
     SCHED_TASK(update_quicktune, 40, 100, 163),
 #endif
+#ifdef USERHOOK_FASTLOOP
+    SCHED_TASK(userhook_FastLoop,    100,     75, 153),
+#endif
+#ifdef USERHOOK_50HZLOOP
+    SCHED_TASK(userhook_50Hz,         50,     75, 156),
+#endif
+#ifdef USERHOOK_MEDIUMLOOP
+    SCHED_TASK(userhook_MediumLoop,   10,     75, 159),
+#endif
+#ifdef USERHOOK_SLOWLOOP
+    SCHED_TASK(userhook_SlowLoop,      3.3,   75, 162),
+#endif
+#ifdef USERHOOK_SUPERSLOWLOOP
+    SCHED_TASK(userhook_SuperSlowLoop, 1,     75, 165),
+#endif
 };
 
 void Plane::get_scheduler_tasks(const AP_Scheduler::Task *&tasks,
