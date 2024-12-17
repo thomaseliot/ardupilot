@@ -2,7 +2,7 @@
 #include "AP_BattMonitor/AP_BattMonitor.h"
 #include "AP_HAL/AP_HAL.h"
 
-#define HEAT_BATTERY_BELOW_TEMP_C 28.0f
+#define HEAT_BATTERY_BELOW_TEMP_C 0.0f
 #define RELAY_INDEX 0
 
 #ifdef USERHOOK_INIT
@@ -41,10 +41,14 @@ void Plane::userhook_SlowLoop()
     float battery_temperature_c = -300.0f;
     bool result = battery.get_temperature(battery_temperature_c);
 
-    // OH crap, seems like get_temperature still returns true when I disconnect the sensor. 
-    if (!result || battery_temperature_c < -100.0f){
-        GCS_SEND_TEXT(MAV_SEVERITY_INFO, "Failed to get batt temp (%f), disabling heater", battery_temperature_c);
-        relay.off(RELAY_INDEX);
+    //seems like get_temperature still returns true when I disconnect the sensor, so also check for a wacky temperature.
+    // TODO This should be a prefight failure, though
+    if (!result || battery_temperature_c < -100.0f ){
+        if(relay.get(RELAY_INDEX))
+        {
+            GCS_SEND_TEXT(MAV_SEVERITY_INFO, "Failed to get batt temp (%f), disabling heater", battery_temperature_c);
+            relay.off(RELAY_INDEX);
+        }
     }
     else if (battery_temperature_c < HEAT_BATTERY_BELOW_TEMP_C && !relay.get(RELAY_INDEX))
     {
